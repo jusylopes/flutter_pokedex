@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/models/pokemon_result_model.dart';
 
 abstract class PokemonState extends Equatable {}
@@ -15,7 +16,7 @@ class LoadingState extends PokemonState {
 
 class SuccessState extends PokemonState {
   SuccessState({required this.pokemon});
-  final List<PokemonResultModel> pokemon;
+  final List<PokemonModel> pokemon;
 
   @override
   List<Object> get props => [pokemon];

@@ -1,6 +1,5 @@
 import 'package:pokedex/cubit/pokemon/pokemon_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/services/pokemon_repository.dart';
 
 class PokemonCubit extends Cubit<PokemonState> {
@@ -17,9 +16,9 @@ class PokemonCubit extends Cubit<PokemonState> {
       emit(LoadingState());
 
       isLoading = true;
-      final response = await repository.getPokemonList();
+      final responsePokemon = await repository.getPokemonList();
 
-           emit(SuccessState(pokemon: response));
+      emit(SuccessState(pokemon: responsePokemon));
       isLoading = false;
     } catch (e) {
       emit(ErrorState());

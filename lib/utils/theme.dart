@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class PokedexTheme {
   static ThemeData get light => ThemeData(
+   scaffoldBackgroundColor: Colors.grey.shade100,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Poppins',
         appBarTheme: const AppBarTheme(

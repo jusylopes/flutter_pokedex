@@ -4,11 +4,11 @@ import 'package:pokedex/models/pokemon_result_model.dart';
 
 class PokemonRepository {
   final Dio _dio = Dio();
+  static const _baseApi = 'https://pokeapi.co/api/v2/pokemon';
 
-  Future<List<PokemonResultModel>> getPokemonList() async {
+  Future<List<PokemonModel>> getPokemonList() async {
     try {
-      Response response =
-          await _dio.get('https://pokeapi.co/api/v2/pokemon?limit=250');
+      Response response = await _dio.get('$_baseApi?limit=250');
 
       final pokemonResultResponse = response.data;
       List<PokemonResultModel> resultPokemon = pokemonResultResponse['results']
@@ -16,9 +16,12 @@ class PokemonRepository {
               (resultPokemon) => PokemonResultModel.fromJson(resultPokemon))
           .toList();
 
-      print(response.data);
+      final pokemons = <PokemonModel>[];
+      for (var pokemon in resultPokemon) {
+        pokemons.add(await getPokemon(name: pokemon.name));
+      }
 
-      return resultPokemon;
+      return pokemons;
     } catch (e) {
       rethrow;
     }
@@ -26,9 +29,7 @@ class PokemonRepository {
 
   Future<PokemonModel> getPokemon({required String name}) async {
     try {
-      Response response =
-          await _dio.get('https://pokeapi.co/api/v2/pokemon/$name');
-
+      Response response = await _dio.get('$_baseApi/$name');
       final pokemonResponse = response.data;
 
       return PokemonModel.fromJson(pokemonResponse);
