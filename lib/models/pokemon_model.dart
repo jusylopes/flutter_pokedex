@@ -293,7 +293,6 @@ class Sprites {
     required this.frontFemale,
     required this.frontShiny,
     required this.frontShinyFemale,
- 
   });
 
   final String backDefault;
@@ -472,7 +471,7 @@ class Gold {
         backShiny: json["back_shiny"],
         frontDefault: json["front_default"],
         frontShiny: json["front_shiny"],
-        frontTransparent: json["front_transparent"] ?? null,
+        frontTransparent: json["front_transparent"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -480,7 +479,7 @@ class Gold {
         "back_shiny": backShiny,
         "front_default": frontDefault,
         "front_shiny": frontShiny,
-        "front_transparent": frontTransparent ?? null,
+        "front_transparent": frontTransparent,
       };
 }
 

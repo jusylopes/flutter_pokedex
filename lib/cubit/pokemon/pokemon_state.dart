@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:pokedex/models/pokemon_model.dart';
-import 'package:pokedex/models/pokemon_result_model.dart';
+
 
 abstract class PokemonState extends Equatable {}
 
