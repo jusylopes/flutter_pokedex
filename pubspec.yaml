@@ -72,7 +72,7 @@ flutter:
     - assets/poke_types/rock.svg
     - assets/poke_types/steel.svg
     - assets/poke_types/water.svg 
-    - assets/images/6x3.svg 
+    - assets/images/pattern.svg 
     - assets/images/pokeball.svg
    
   # An image asset can refer to one or more resolution-specific "variants", see
