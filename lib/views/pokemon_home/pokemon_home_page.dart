@@ -5,7 +5,6 @@ import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_state.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/utils/colors.dart';
-import 'package:pokedex/utils/icons.dart';
 import 'package:pokedex/utils/text_styles.dart';
 
 class PokemonHomePage extends StatefulWidget {
