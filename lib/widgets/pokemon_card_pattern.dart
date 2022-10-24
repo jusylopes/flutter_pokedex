@@ -13,7 +13,7 @@ class PokemonCardPattern extends StatelessWidget {
       alignment: AlignmentGeometry.lerp(
         Alignment.topLeft,
         Alignment.topCenter,
-        0.70,
+        0.7,
       ),
       child: ShaderMask(
         blendMode: BlendMode.srcIn,

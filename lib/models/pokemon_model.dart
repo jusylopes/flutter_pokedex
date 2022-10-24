@@ -49,7 +49,7 @@ class PokemonModel {
             json["game_indices"].map((x) => GameIndex.fromJson(x))),
         height: json["height"],
         heldItems: List<dynamic>.from(json["held_items"].map((x) => x)),
-        id: json["id"],
+        id:  json["id"],
         isDefault: json["is_default"],
         locationAreaEncounters: json["location_area_encounters"],
         moves: List<Move>.from(json["moves"].map((x) => Move.fromJson(x))),
