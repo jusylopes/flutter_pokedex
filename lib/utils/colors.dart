@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+
 class PokemonColors {
+  
   static const gallery = Color(0xFFF0F0F0);
 
   static const bugType = Color(0xFF8CB230);
