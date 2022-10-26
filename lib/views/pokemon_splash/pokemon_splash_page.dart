@@ -20,8 +20,9 @@ class _PokemonSplashPageState extends State<PokemonSplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text('teste'),
+    return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
+      body: const Text('teste'),
     );
   }
 }

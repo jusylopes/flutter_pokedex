@@ -7,7 +7,6 @@ import 'package:pokedex/utils/colors.dart';
 import 'package:pokedex/utils/text_styles.dart';
 import 'package:pokedex/widgets/pokeball.dart';
 import 'package:pokedex/widgets/pokemon_card_data.dart';
-import 'package:pokedex/widgets/pokemon_card_pattern.dart';
 import 'package:pokedex/widgets/pokemon_image.dart';
 import 'package:pokedex/widgets/reload_button.dart';
 
@@ -40,7 +39,6 @@ class _PopularMovie extends State<PokemonHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -70,8 +68,7 @@ class _PopularMovie extends State<PokemonHomePage> {
           return Scrollbar(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: ListView.separated(
-                separatorBuilder: (_, __) => const SizedBox(height: 5.0),
+              child: ListView.builder(
                 controller: scrollController,
                 itemCount: pokemonList.length,
                 itemBuilder: (context, index) {
@@ -101,7 +98,6 @@ class _PopularMovie extends State<PokemonHomePage> {
                             padding: const EdgeInsets.all(20),
                             child: PokemonCardData(pokemon: pokemon)),
                       ),
-                      const PokemonCardPattern(),
                       const Pokeball(),
                       PokemonImage(pokemon: pokemon),
                     ]),
