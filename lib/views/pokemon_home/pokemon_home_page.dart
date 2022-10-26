@@ -40,6 +40,9 @@ class _PopularMovie extends State<PokemonHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -50,11 +53,17 @@ class _PopularMovie extends State<PokemonHomePage> {
       body: BlocBuilder<PokemonCubit, PokemonState>(
         builder: (context, state) {
           if (state is InitialState || state is LoadingState) {
-            const Center(child: CircularProgressIndicator());
+            Center(
+                child: CircularProgressIndicator(
+              color: Theme.of(context).primaryColor,
+            ));
           } else if (state is ErrorState) {
-            return Center(child: ReloadButton(onPressed: () {
-              context.read<PokemonCubit>().getPokemons();
-            }));
+            return Center(
+                child: ReloadButton(
+                    maxHeight: screenHeight,
+                    onPressed: () {
+                      context.read<PokemonCubit>().getPokemons();
+                    }));
           } else if (state is SuccessState) {
             pokemonList.addAll(state.pokemon);
           }
@@ -72,25 +81,26 @@ class _PopularMovie extends State<PokemonHomePage> {
                     onTap: () {},
                     child: Stack(alignment: Alignment.centerRight, children: [
                       Container(
-                          margin: const EdgeInsets.only(top: 20),
-                          decoration: BoxDecoration(
-                            color: PokemonColors().pokeColorBackground(
-                                pokemon.types[0].type.name),
-                            borderRadius: BorderRadius.circular(10.0),
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 20,
-                                color: PokemonColors()
-                                    .pokeColorBackground(
-                                        pokemon.types[0].type.name)
-                                    .withOpacity(0.4),
-                                offset: const Offset(0, 10),
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: PokemonCardData(pokemon: pokemon))),
+                        margin: const EdgeInsets.only(top: 30),
+                        decoration: BoxDecoration(
+                          color: PokemonColors()
+                              .pokeColorBackground(pokemon.types[0].type.name),
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 20,
+                              color: PokemonColors()
+                                  .pokeColorBackground(
+                                      pokemon.types[0].type.name)
+                                  .withOpacity(0.4),
+                              offset: const Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: PokemonCardData(pokemon: pokemon)),
+                      ),
                       const PokemonCardPattern(),
                       const Pokeball(),
                       PokemonImage(pokemon: pokemon),
