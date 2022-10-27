@@ -4,6 +4,7 @@ import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
 import 'package:pokedex/services/pokemon_repository.dart';
 import 'package:pokedex/utils/routes.dart';
 import 'package:pokedex/utils/theme.dart';
+import 'package:pokedex/views/pokemon_detail/pokemon_detail_page.dart';
 import 'package:pokedex/views/pokemon_home/pokemon_home_page.dart';
 import 'package:pokedex/views/pokemon_splash/pokemon_splash_page.dart';
 
@@ -31,7 +32,7 @@ class Pokedex extends StatelessWidget {
         routes: {
           Routes.splash: (context) => const PokemonSplashPage(),
           Routes.home: (context) => const PokemonHomePage(),
-          Routes.pokemonDetail: (context) => const PokemonSplashPage(),
+          Routes.pokemonDetail: (context) => const PokemonDetailPage(),
         },
       ),
     );
