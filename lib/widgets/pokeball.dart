@@ -11,7 +11,7 @@ class Pokeball extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomRight,
-      padding: const EdgeInsets.only(top: 20),
+      
       child: ClipRect(
         child: Align(
           alignment: Alignment.centerLeft,
@@ -32,7 +32,7 @@ class Pokeball extends StatelessWidget {
             child: SvgPicture.asset(
               PokemonIcons.pokeball,
               fit: BoxFit.fitWidth,
-              height: 145,
+              height: 150,
               alignment: Alignment.bottomCenter,
             ),
           ),

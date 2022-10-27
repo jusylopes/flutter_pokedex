@@ -78,7 +78,8 @@ class _PopularMovie extends State<PokemonHomePage> {
                     onTap: () {},
                     child: Stack(alignment: Alignment.centerRight, children: [
                       Container(
-                        margin: const EdgeInsets.only(top: 30),
+                        height: 130,
+                        margin: const EdgeInsets.only(top: 15),
                         decoration: BoxDecoration(
                           color: PokemonColors()
                               .pokeColorBackground(pokemon.types[0].type.name),
