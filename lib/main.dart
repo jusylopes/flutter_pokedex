@@ -24,7 +24,7 @@ class Pokedex extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Pokedex',
+        title: 'Pokédex',
         theme: PokedexTheme.light,
         darkTheme: PokedexTheme.dark,
         initialRoute: Routes.splash,

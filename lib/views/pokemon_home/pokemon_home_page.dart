@@ -43,7 +43,7 @@ class _PopularMovie extends State<PokemonHomePage> {
         title: const Padding(
           padding: EdgeInsets.only(top: 20),
           child: Text(
-            'Pokedex',
+            'Pokédex',
             style: PokemonTextStyles.applicationTitle,
           ),
         ),
