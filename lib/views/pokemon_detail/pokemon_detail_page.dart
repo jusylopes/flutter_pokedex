@@ -14,18 +14,42 @@ class PokemonDetailPage extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor:
-            PokemonColors().pokeColorBackground(pokemon.types[0].type.name),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(screenHeight / 5),
-          child: Stack(alignment: AlignmentDirectional.topCenter, children: [
-            Center(child: PokemonTextDetail(pokemon: pokemon)),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              PokemonImage(pokemon: pokemon),
-              PokemonCardData(pokemon: pokemon)
-            ]),
-          ]),
+      // appBar: AppBar(
+      //   backgroundColor:
+      //       PokemonColors().pokeColorBackground(pokemon.types[0].type.name),
+      //   bottom: PreferredSize(
+      //     preferredSize: Size.fromHeight(screenHeight / 4),
+      //     child: Stack(children: [
+      //       PokemonTextDetail(pokemon: pokemon),
+      //       const SizedBox(
+      //         height: 200,
+      //       ),
+      //       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      //         PokemonImage(pokemon: pokemon),
+      //         PokemonCardData(pokemon: pokemon)
+      //       ]),
+      //     ]),
+      //   ),
+      // ),
+
+      backgroundColor:
+          PokemonColors().pokeColorBackground(pokemon.types[0].type.name),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            PokemonTextDetail(pokemon: pokemon),
+            
+            Padding(
+              padding: const EdgeInsets.only(top: 100),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  PokemonImage(pokemon: pokemon),
+                  PokemonCardData(pokemon: pokemon),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
