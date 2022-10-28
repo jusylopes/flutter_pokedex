@@ -40,17 +40,14 @@ class _PopularMovie extends State<PokemonHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.only(top: 20),
-          child: Text(
-            'Pokédex',
-            style: PokemonTextStyles.applicationTitle,
-          ),
+        title: const Text(
+          'Pokédex',
+          style: PokemonTextStyles.applicationTitle,
         ),
       ),
       body: BlocBuilder<PokemonCubit, PokemonState>(
         builder: (context, state) {
-          if (state is InitialState || state is LoadingState) {
+          if (state is LoadingState) {
             Center(
                 child: CircularProgressIndicator(
               color: Theme.of(context).primaryColor,

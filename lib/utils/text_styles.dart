@@ -13,6 +13,15 @@ abstract class PokemonTextStyles {
     color: Colors.white,
   );
 
+  static final pokemonNameDetail = TextStyle(
+    fontSize: 100.0,
+    fontWeight: FontWeight.bold,
+    foreground: Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2
+      ..color = Colors.white,
+  );
+
   static const filterTitle =
       TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold);
 

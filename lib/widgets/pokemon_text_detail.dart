@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pokedex/utils/icons.dart';
+import 'package:pokedex/models/pokemon_model.dart';
+import 'package:pokedex/utils/text_styles.dart';
 
-class PokemonCardPattern extends StatelessWidget {
-  const PokemonCardPattern({
-    Key? key,
+class PokemonTextDetail extends StatelessWidget {
+  const PokemonTextDetail({
+    Key? key, required this.pokemon,
   }) : super(key: key);
+
+  final PokemonModel pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +29,11 @@ class PokemonCardPattern extends StatelessWidget {
             end: Alignment.bottomCenter,
           ).createShader(bounds);
         },
-        child: SvgPicture.asset(
-          PokemonIcons.pattern,
-          height: 32.0,
-          alignment: Alignment.topCenter,
-        ),
+        child: Text(pokemon.name.toUpperCase(),
+            style: PokemonTextStyles.pokemonNameDetail,
+            overflow: TextOverflow.fade,
+            maxLines: 1,
+            softWrap: false),
       ),
     );
   }
