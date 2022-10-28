@@ -8,7 +8,7 @@ class PokemonRepository {
 
   Future<List<PokemonModel>> getPokemonList() async {
     try {
-      Response response = await _dio.get('$_baseApi?limit=700');
+      Response response = await _dio.get('$_baseApi?limit=200');
 
       final pokemonResultResponse = response.data;
       List<PokemonResultModel> resultPokemon = pokemonResultResponse['results']

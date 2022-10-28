@@ -47,8 +47,8 @@ class _PopularMovie extends State<PokemonHomePage> {
       ),
       body: BlocBuilder<PokemonCubit, PokemonState>(
         builder: (context, state) {
-          if (state is LoadingState) {
-            Center(
+          if (state is InitialState || state is LoadingState) {
+            return Center(
                 child: CircularProgressIndicator(
               color: Theme.of(context).primaryColor,
             ));
