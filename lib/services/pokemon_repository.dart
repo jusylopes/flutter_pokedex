@@ -27,6 +27,7 @@ class PokemonRepository {
     }
   }
 
+
   Future<PokemonModel> getPokemon({required String name}) async {
     try {
       Response response = await _dio.get('$_baseApi/$name');
