@@ -12,10 +12,12 @@ class PokemonImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.network(
+      scale: 0.6,
       width: 150,
       pokemon.sprites.frontDefault,
       fit: BoxFit.cover,
       filterQuality: FilterQuality.high,
+      
     );
   }
 }

@@ -36,7 +36,9 @@ class PokemonCard extends StatelessWidget {
               
             );
               },
-              child: Stack(alignment: Alignment.centerRight, children: [
+              child: Stack(
+               
+                alignment: Alignment.centerRight, children: [
                 Container(
                   height: 130,
                   margin: const EdgeInsets.only(top: 15),

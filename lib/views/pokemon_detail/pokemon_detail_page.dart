@@ -12,30 +12,35 @@ class PokemonDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final pokemon = ModalRoute.of(context)!.settings.arguments as PokemonModel;
     double screenHeight = MediaQuery.of(context).size.height;
+    final backgroundColor =
+        PokemonColors().pokeColorBackground(pokemon.types[0].type.name);
+    const int defaulTabController = 2;
 
     return Scaffold(
-      
       appBar: AppBar(
-        backgroundColor:
-            PokemonColors().pokeColorBackground(pokemon.types[0].type.name),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(screenHeight / 4),
-          child: Stack(children: [
-            PokemonTextDetail(pokemon: pokemon),
-            const SizedBox(
-              height: 200,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 50, right: 20),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                PokemonImage(pokemon: pokemon),
-                PokemonCardData(pokemon: pokemon)
-              ]),
-            ),
-          ]),
-        ),
+        automaticallyImplyLeading: true,
+        backgroundColor: backgroundColor,
       ),
-
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Container(
+            color: backgroundColor,
+            child: Stack(children: [
+              PokemonTextDetail(pokemon: pokemon),
+              Padding(
+                padding: const EdgeInsets.only(top: 70),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      PokemonImage(pokemon: pokemon),
+                      PokemonCardData(pokemon: pokemon)
+                    ]),
+              ),
+            ]),
+          ),
+        ]),
+      ),
     );
   }
 }
