@@ -40,9 +40,12 @@ class _PopularMovie extends State<PokemonHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Pokédex',
-          style: PokemonTextStyles.applicationTitle,
+        title: const Padding(
+          padding: EdgeInsets.only(top: 8.0),
+          child: Text(
+            'Pokédex',
+            style: PokemonTextStyles.applicationTitle,
+          ),
         ),
       ),
       body: BlocBuilder<PokemonCubit, PokemonState>(

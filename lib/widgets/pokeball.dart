@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:pokedex/utils/icons.dart';
 
 class Pokeball extends StatelessWidget {
@@ -11,7 +11,6 @@ class Pokeball extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomRight,
-      
       child: ClipRect(
         child: Align(
           alignment: Alignment.centerLeft,
@@ -29,8 +28,10 @@ class Pokeball extends StatelessWidget {
                 end: Alignment.bottomCenter,
               ).createShader(bounds);
             },
-            child: SvgPicture.asset(
-              PokemonIcons.pokeball,
+            child: const Image(
+              image: Svg(
+                PokemonIcons.pokeball
+              ),
               fit: BoxFit.fitWidth,
               height: 150,
               alignment: Alignment.bottomCenter,

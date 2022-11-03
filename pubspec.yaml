@@ -35,8 +35,8 @@ dependencies:
   equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
-  flutter_svg: ^1.1.5
+  flutter_bloc: ^8.1.1 
+  flutter_svg_provider: ^1.0.3
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -71,11 +71,12 @@ flutter:
     - assets/poke_types/psychic.svg
     - assets/poke_types/rock.svg
     - assets/poke_types/steel.svg
-    - assets/poke_types/water.svg 
-    - assets/images/pattern.svg 
+    - assets/poke_types/water.svg
+    - assets/images/pattern.svg
     - assets/images/pokeball.svg
     - assets/images/pokeball_icon.png
-   
+    - assets/images/pokeball_tab.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
@@ -89,7 +90,6 @@ flutter:
     - family: SFProDisplay
       fonts:
         - asset: assets/fonts/SFProDisplay.ttf
-  
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

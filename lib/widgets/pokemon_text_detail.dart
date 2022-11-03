@@ -12,23 +12,27 @@ class PokemonTextDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShaderMask(
-      blendMode: BlendMode.srcIn,
-      shaderCallback: (Rect bounds) {
-        return LinearGradient(
-          colors: [
-            Colors.white.withOpacity(0.3),
-            Colors.white.withOpacity(0.0),
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ).createShader(bounds);
-      },
-      child: Text(pokemon.name.toUpperCase(),
-          style: PokemonTextStyles.pokemonNameDetail,
-          overflow: TextOverflow.fade,
-          maxLines: 1,
-          softWrap: false),
+    return Padding(
+      padding: const EdgeInsets.only(top: 25),
+      child: ShaderMask(
+        blendMode: BlendMode.srcIn,
+        shaderCallback: (Rect bounds) {
+          return LinearGradient(
+            colors: [
+              Colors.white.withOpacity(0.3),
+              Colors.white.withOpacity(0.0),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ).createShader(bounds);
+        },
+        child: Text(pokemon.name.toUpperCase(),
+            style: PokemonTextStyles.pokemonNameDetail,
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            softWrap: false),
+      ),
     );
   }
 }
