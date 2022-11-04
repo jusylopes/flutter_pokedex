@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/utils/colors.dart';
 import 'package:pokedex/utils/icons.dart';
-import 'package:pokedex/utils/text_styles.dart';
+import 'package:pokedex/widgets/pokemon_about_tab.dart';
 import 'package:pokedex/widgets/pokemon_card_data.dart';
 import 'package:pokedex/widgets/pokemon_image.dart';
 import 'package:pokedex/widgets/pokemon_text_detail.dart';
@@ -39,7 +39,7 @@ class PokemonDetailPage extends StatelessWidget {
               ),
             ]),
             Container(
-              height: 50,
+              height: 45,
               color: backgroundColor,
               child: TabBar(indicator: _pokeballTabbar(), tabs: const [
                 Tab(text: "About"),
@@ -57,8 +57,9 @@ class PokemonDetailPage extends StatelessWidget {
                   child: Container(
                     color: Colors.white,
                     height: 500,
-                    child: const TabBarView(children: [
-                      Text('teste'),
+                    child: TabBarView(children: [
+                      PokemonAboutTab(
+                          pokemon: pokemon, backgroundColor: backgroundColor)
                     ]),
                   )),
             ),
