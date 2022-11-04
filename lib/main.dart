@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
+import 'package:pokedex/cubit/pokemon_species/pokemon_species_cubit.dart';
 import 'package:pokedex/services/pokemon_repository.dart';
 import 'package:pokedex/utils/routes.dart';
 import 'package:pokedex/utils/theme.dart';
@@ -21,6 +22,9 @@ class Pokedex extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (_) => PokemonCubit(repository: PokemonRepository()),
+        ),
+         BlocProvider(
+          create: (_) => PokemonSpeciesCubit(repository: PokemonRepository()),
         ),
       ],
       child: MaterialApp(
