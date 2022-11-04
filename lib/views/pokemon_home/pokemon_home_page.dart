@@ -41,7 +41,7 @@ class _PopularMovie extends State<PokemonHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
-          padding: EdgeInsets.only(top: 8.0),
+          padding: EdgeInsets.only(top: 15, bottom: 15),
           child: Text(
             'Pokédex',
             style: PokemonTextStyles.applicationTitle,

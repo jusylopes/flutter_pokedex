@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/utils/colors.dart';
 import 'package:pokedex/utils/icons.dart';
+import 'package:pokedex/utils/text_styles.dart';
 import 'package:pokedex/widgets/pokemon_card_data.dart';
 import 'package:pokedex/widgets/pokemon_image.dart';
 import 'package:pokedex/widgets/pokemon_text_detail.dart';
@@ -56,9 +57,8 @@ class PokemonDetailPage extends StatelessWidget {
                   child: Container(
                     color: Colors.white,
                     height: 500,
-                    child: TabBarView(children: [
-                      _pokemonAbout(pokemon: pokemon),
-                      _pokemonAbout(pokemon: pokemon)
+                    child: const TabBarView(children: [
+                      Text('teste'),
                     ]),
                   )),
             ),
@@ -73,11 +73,5 @@ class PokemonDetailPage extends StatelessWidget {
         image: DecorationImage(
       image: AssetImage(PokemonIcons.pokeballTab),
     ));
-  }
-
-  _pokemonAbout({required PokemonModel pokemon}) {
-    return Column(
-      
-    );
   }
 }

@@ -39,4 +39,16 @@ abstract class PokemonTextStyles {
     fontWeight: FontWeight.w400,
     color: Colors.white,
   );
+
+  static const InformationTitleRow = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w500,
+    color: Colors.black,
+  );
+
+  static const InformationTextRow = TextStyle(
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+    color: Color(0xff747476),
+  );
 }
