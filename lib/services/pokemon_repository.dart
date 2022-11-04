@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/models/pokemon_result_model.dart';
+import 'package:pokedex/models/pokemon_species.dart';
 
 class PokemonRepository {
   final Dio _dio = Dio();
@@ -34,6 +35,17 @@ class PokemonRepository {
       final pokemonResponse = response.data;
 
       return PokemonModel.fromJson(pokemonResponse);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+    Future<PokemonSpecies> getPokemonSpecies({required int id}) async {
+    try {
+      Response response = await _dio.get('$_baseApi-species/$id');
+      final pokemonSpecies = response.data;
+
+      return PokemonSpecies.fromJson(pokemonSpecies);
     } catch (e) {
       rethrow;
     }
