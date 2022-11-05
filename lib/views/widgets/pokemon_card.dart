@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/utils/colors.dart';
-import 'package:pokedex/utils/routes.dart';
-import 'package:pokedex/widgets/pokeball.dart';
-import 'package:pokedex/widgets/pokemon_card_data.dart';
-import 'package:pokedex/widgets/pokemon_image.dart';
+import 'package:pokedex/views/pokemon_detail_page.dart';
+import 'package:pokedex/views/widgets/pokeball.dart';
+import 'package:pokedex/views/widgets/pokemon_card_data.dart';
+import 'package:pokedex/views/widgets/pokemon_image.dart';
 
 class PokemonCard extends StatelessWidget {
   const PokemonCard({
@@ -29,16 +29,14 @@ class PokemonCard extends StatelessWidget {
 
             return GestureDetector(
               onTap: () {
-              Navigator.pushNamed(
-              context,
-              Routes.pokemonDetail,
-              arguments: pokemon,
-              
-            );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          PokemonDetailPage(pokemon: pokemon)),
+                );
               },
-              child: Stack(
-               
-                alignment: Alignment.centerRight, children: [
+              child: Stack(alignment: Alignment.centerRight, children: [
                 Container(
                   height: 130,
                   margin: const EdgeInsets.only(top: 15),

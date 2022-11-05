@@ -75,7 +75,7 @@ flutter:
     - assets/images/pattern.svg
     - assets/images/pokeball.svg
     - assets/images/pokeball_icon.png
-    - assets/images/pokeball_tab.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

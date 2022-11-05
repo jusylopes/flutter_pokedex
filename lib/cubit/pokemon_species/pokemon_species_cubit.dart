@@ -8,12 +8,12 @@ class PokemonSpeciesCubit extends Cubit<PokemonSpeciesState> {
 
   final PokemonRepository repository;
 
-  Future<void> getPokemonsSpecies({required int id}) async {
+  Future<void> getPokemonsSpecies({required int pokemonId}) async {
     try {
       emit(LoadingState());
 
       final PokemonSpecies responsePokemon =
-          await repository.getPokemonSpecies(id: id);
+          await repository.getPokemonSpecies(pokemonId);
 
       emit(SuccessState(pokemon: responsePokemon));
     } catch (e) {

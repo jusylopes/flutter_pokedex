@@ -4,8 +4,8 @@ import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_state.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/utils/text_styles.dart';
-import 'package:pokedex/widgets/pokemon_card.dart';
-import 'package:pokedex/widgets/reload_button.dart';
+import 'package:pokedex/views/widgets/pokemon_card.dart';
+import 'package:pokedex/views/widgets/reload_button.dart';
 
 class PokemonHomePage extends StatefulWidget {
   const PokemonHomePage({super.key});
@@ -21,25 +21,17 @@ class _PopularMovie extends State<PokemonHomePage> {
   @override
   void initState() {
     super.initState();
-    _onScroll();
+  
   }
 
-  void _onScroll() {
-    scrollController.addListener(() async {
-      if (scrollController.position.maxScrollExtent ==
-              scrollController.offset &&
-          !context.read<PokemonCubit>().isLoading) {
-        context.read<PokemonCubit>().getPokemons();
-      }
-    });
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
+        
         title: const Padding(
           padding: EdgeInsets.only(top: 15, bottom: 15),
           child: Text(
