@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class PokemonTextStyles {
   static const applicationTitle = TextStyle(
-    fontSize: 32.0,
+    fontSize: 30.0,
     fontWeight: FontWeight.w700,
     color: Colors.black,
   );
@@ -40,13 +40,18 @@ abstract class PokemonTextStyles {
     color: Colors.white,
   );
 
-  static const InformationTitleRow = TextStyle(
+  static const aboutPokemon = TextStyle(
+    fontSize: 14.0,
+    color: Color(0xff747476),
+  );
+
+  static const informationTitleRow = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w500,
     color: Colors.black,
   );
 
-  static const InformationTextRow = TextStyle(
+  static const informationTextRow = TextStyle(
     fontSize: 14.0,
     fontWeight: FontWeight.w400,
     color: Color(0xff747476),
