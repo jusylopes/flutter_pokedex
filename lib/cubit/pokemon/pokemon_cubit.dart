@@ -9,15 +9,11 @@ class PokemonCubit extends Cubit<PokemonState> {
 
   final PokemonRepository repository;
 
-  bool isLoading = false;
-
   Future<void> getPokemons() async {
     try {
       emit(LoadingState());
-      isLoading = true;
 
-      final responsePokemon = await repository.getPokemonList();
-      isLoading = false;
+      final responsePokemon = await repository.getPokemonList();    
 
       emit(SuccessState(pokemon: responsePokemon));
     } catch (e) {
