@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/cubit/pokemon_species/pokemon_species_cubit.dart';
+import 'package:pokedex/cubit/pokemon_species/pokemon_species_state.dart';
 import 'package:pokedex/models/pokemon_model.dart';
+import 'package:pokedex/models/pokemon_species.dart';
 import 'package:pokedex/utils/colors.dart';
 import 'package:pokedex/utils/icons.dart';
 import 'package:pokedex/widgets/pokemon_about_tab.dart';
 import 'package:pokedex/widgets/pokemon_card_data.dart';
 import 'package:pokedex/widgets/pokemon_image.dart';
 import 'package:pokedex/widgets/pokemon_text_detail.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PokemonDetailPage extends StatelessWidget {
   const PokemonDetailPage({super.key});
@@ -54,14 +58,17 @@ class PokemonDetailPage extends StatelessWidget {
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25),
                   ),
-                  child: Container(
-                    color: Colors.white,
-                    height: 500,
-                    child: TabBarView(children: [
-                      PokemonAboutTab(
-                          pokemon: pokemon, backgroundColor: backgroundColor)
-                    ]),
-                  )),
+                  child: BlocBuilder<PokemonSpeciesCubit, PokemonSpeciesState>(
+                      builder: (context, state) {
+                    return Container(
+                      color: Colors.white,
+                      height: 500,
+                      child: TabBarView(children: [
+                        PokemonAboutTab(
+                            pokemon: pokemon, backgroundColor: backgroundColor)
+                      ]),
+                    );
+                  })),
             ),
           ]),
         ),
