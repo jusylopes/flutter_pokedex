@@ -13,21 +13,40 @@ class PokemonImage extends StatefulWidget {
   State<PokemonImage> createState() => _PokemonImageState();
 }
 
-class _PokemonImageState extends State<PokemonImage> {
-  bool firstChild = false;
+class _PokemonImageState extends State<PokemonImage>
+    with TickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller =
+        AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    animation = Tween<double>(begin:100, end: 120).animate(controller)
+      ..addListener(() {
+        setState(() {});
+      });
+    controller.forward();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedCrossFade(
-        firstChild: Image.network(
-          widget.pokemon.sprites.backDefault,
-          fit: BoxFit.cover,
-          filterQuality: FilterQuality.high,
-        ),
-        secondChild: Image.network(widget.pokemon.sprites.frontDefault,
-            fit: BoxFit.cover, filterQuality: FilterQuality.high),
-        crossFadeState:
-            firstChild ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-        duration: const Duration(seconds: 3));
+    return SizedBox(
+      height: animation.value,
+      width: animation.value,
+      child: Image.network(
+        widget.pokemon.sprites.frontDefault,
+        fit: BoxFit.cover,
+        filterQuality: FilterQuality.high,
+      ),
+    );
   }
 }

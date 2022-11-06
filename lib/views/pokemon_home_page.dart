@@ -16,22 +16,13 @@ class PokemonHomePage extends StatefulWidget {
 
 class _PopularMovie extends State<PokemonHomePage> {
   final List<PokemonModel> pokemonList = [];
-  final ScrollController scrollController = ScrollController();
 
-  @override
-  void initState() {
-    super.initState();
-  
-  }
-
-  
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
-        
         title: const Padding(
           padding: EdgeInsets.only(top: 15, bottom: 15),
           child: Text(
@@ -57,16 +48,9 @@ class _PopularMovie extends State<PokemonHomePage> {
           } else if (state is SuccessState) {
             pokemonList.addAll(state.pokemon);
           }
-          return PokemonCard(
-              scrollController: scrollController, pokemonList: pokemonList);
+          return PokemonCard(pokemonList: pokemonList);
         },
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    scrollController.dispose();
-    super.dispose();
   }
 }

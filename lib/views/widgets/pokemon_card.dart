@@ -9,11 +9,9 @@ import 'package:pokedex/views/widgets/pokemon_image.dart';
 class PokemonCard extends StatelessWidget {
   const PokemonCard({
     Key? key,
-    required this.scrollController,
     required this.pokemonList,
   }) : super(key: key);
 
-  final ScrollController scrollController;
   final List<PokemonModel> pokemonList;
 
   @override
@@ -22,7 +20,6 @@ class PokemonCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: ListView.builder(
-          controller: scrollController,
           itemCount: pokemonList.length,
           itemBuilder: (context, index) {
             final pokemon = pokemonList[index];
