@@ -1,17 +1,19 @@
 import 'package:dio/dio.dart';
+import 'package:pokedex/client/client_http.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/models/pokemon_result_model.dart';
 import 'package:pokedex/models/pokemon_species.dart';
 import 'package:pokedex/services/pokemons_repository_interface.dart';
 
 class PokemonRepository extends IPokemonRepository {
-  final Dio _dio = Dio();
+  PokemonRepository(this._clientHttp);
+  final ClientHttp _clientHttp;
   static const _baseApi = 'https://pokeapi.co/api/v2/pokemon';
 
   @override
   Future<List<PokemonModel>> getPokemonList() async {
     try {
-      Response response = await _dio.get('$_baseApi?limit=200');
+      Response response = await _clientHttp.get('$_baseApi?limit=200');
 
       final pokemonResultResponse = response.data;
       List<PokemonResultModel> resultPokemon = pokemonResultResponse['results']
@@ -33,7 +35,7 @@ class PokemonRepository extends IPokemonRepository {
   @override
   Future<PokemonModel> getPokemon(String name) async {
     try {
-      Response response = await _dio.get('$_baseApi/$name');
+      Response response = await _clientHttp.get('$_baseApi/$name');
       final pokemonResponse = response.data;
 
       return PokemonModel.fromJson(pokemonResponse);
@@ -45,7 +47,7 @@ class PokemonRepository extends IPokemonRepository {
   @override
   Future<PokemonSpecies> getPokemonSpecies(int id) async {
     try {
-      Response response = await _dio.get('$_baseApi-species/$id');
+      Response response = await _clientHttp.get('$_baseApi-species/$id');
       final pokemonSpecies = response.data;
 
       return PokemonSpecies.fromJson(pokemonSpecies);

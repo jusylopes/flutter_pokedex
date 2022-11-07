@@ -33,10 +33,10 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final PokemonModel pokemo = widget.pokemon;
+    final PokemonModel pokemon = widget.pokemon;
     double screenHeight = MediaQuery.of(context).size.height;
     final backgroundColor =
-        PokemonColors().pokeColorBackground(pokemo.types[0].type.name);
+        PokemonColors().pokeColorBackground(pokemon.types[0].type.name);
 
     return Scaffold(
         backgroundColor: backgroundColor,
@@ -46,16 +46,18 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
         ),
         body: SingleChildScrollView(
           child: Column(
+          
             children: [
-              Stack(children: [
-                PokemonTextDetail(pokemon: pokemo),
+              Stack(
+                children: [
+                PokemonTextDetail(pokemon: pokemon),
                 Padding(
                   padding: const EdgeInsets.only(top: 95),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        PokemonImage(pokemon: pokemo),
-                        PokemonCardData(pokemon: pokemo)
+                        PokemonImage(pokemon: pokemon),
+                        PokemonCardData(pokemon: pokemon)
                       ]),
                 ),
               ]),
@@ -82,13 +84,13 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                                 onPressed: () {
                                   context
                                       .read<PokemonSpeciesCubit>()
-                                      .getPokemonsSpecies(pokemonId: pokemo.id);
+                                      .getPokemonsSpecies(pokemonId: pokemon.id);
                                 }));
                       } else if (state is SuccessState) {
                         final pokemonSpecies = state.pokemon;
 
                         return PokemonAbout(
-                          pokemon: pokemo,
+                          pokemon: pokemon,
                           pokemonSpecies: pokemonSpecies,
                         );
                       }
