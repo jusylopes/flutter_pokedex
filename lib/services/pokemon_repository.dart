@@ -3,7 +3,7 @@ import 'package:pokedex/client/client_http.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/models/pokemon_result_model.dart';
 import 'package:pokedex/models/pokemon_species.dart';
-import 'package:pokedex/services/pokemons_repository_interface.dart';
+import 'package:pokedex/services/pokemon_repository_interface.dart';
 
 class PokemonRepository extends IPokemonRepository {
   PokemonRepository(this._clientHttp);
