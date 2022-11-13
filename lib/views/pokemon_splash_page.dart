@@ -45,7 +45,7 @@ class _PokemonSplashPageState extends State<PokemonSplashPage>
         child: RotationTransition(
           turns: Tween(begin: 0.0, end: 2.0).animate(controller),
           child: Container(
-            height: screenHeight / 5,
+            height: screenHeight / 6,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(PokemonIcons.pokeballIcon),
