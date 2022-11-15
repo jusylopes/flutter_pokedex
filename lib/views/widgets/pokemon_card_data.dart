@@ -11,25 +11,28 @@ class PokemonCardData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '# ${_transformPokemonId(pokemon.id)}',
-          textAlign: TextAlign.left,
-          style: PokemonTextStyles.pokemonNumber,
-        ),
-        Text(
-          _capitalize(pokemon.name),
-          style: PokemonTextStyles.pokemonName,
-        ),
-        const SizedBox(height: 5.0),
-        Row(
-          children: pokemon.types
-              .map(
-                (Type type) => SizedBox(
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 5),
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, bottom: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            '# ${_transformPokemonId(pokemon.id)}',
+            textAlign: TextAlign.left,
+            style: PokemonTextStyles.pokemonNumber,
+          ),
+          Text(
+            _capitalize(pokemon.name),
+            style: PokemonTextStyles.pokemonName,
+            maxLines: 1,
+          ),
+          const SizedBox(height: 5.0),
+          Row(
+            children: pokemon.types
+                .map(
+                  (Type type) => Container(
+                    margin: const EdgeInsets.only(right: 5),
                     height: 25.0,
                     decoration: BoxDecoration(
                         color: PokemonColors().getpokeColor(type.type.name),
@@ -55,11 +58,11 @@ class PokemonCardData extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              )
-              .toList(),
-        ),
-      ],
+                )
+                .toList(),
+          ),
+        ],
+      ),
     );
   }
 

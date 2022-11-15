@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/services/pokemon_repository.dart';
 
 class PokemonCubit extends Cubit<PokemonState> {
-  PokemonCubit({required this.repository}) : super(InitialState()) {
+  PokemonCubit(this.repository) : super(InitialState()) {
     getPokemons();
   }
 

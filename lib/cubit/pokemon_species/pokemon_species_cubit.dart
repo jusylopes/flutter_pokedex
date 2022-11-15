@@ -4,7 +4,7 @@ import 'package:pokedex/models/pokemon_species.dart';
 import 'package:pokedex/services/pokemon_repository.dart';
 
 class PokemonSpeciesCubit extends Cubit<PokemonSpeciesState> {
-  PokemonSpeciesCubit({required this.repository}) : super(InitialState());
+  PokemonSpeciesCubit(this.repository) : super(InitialState());
 
   final PokemonRepository repository;
 

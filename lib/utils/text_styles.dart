@@ -8,9 +8,9 @@ abstract class PokemonTextStyles {
   );
 
   static const pokemonName = TextStyle(
-    fontSize: 26.0,
+    fontSize: 24.0,
     fontWeight: FontWeight.bold,
-    color: Colors.white,
+    color: Color(0x9917171B),
   );
 
   static final pokemonNameDetail = TextStyle(

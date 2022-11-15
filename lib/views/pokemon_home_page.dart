@@ -19,8 +19,6 @@ class _PopularMovie extends State<PokemonHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
@@ -31,26 +29,33 @@ class _PopularMovie extends State<PokemonHomePage> {
           ),
         ),
       ),
-      body: BlocBuilder<PokemonCubit, PokemonState>(
-        builder: (context, state) {
-          if (state is InitialState || state is LoadingState) {
-            return Center(
-                child: CircularProgressIndicator(
-              color: Theme.of(context).primaryColor,
-            ));
-          } else if (state is ErrorState) {
-            return Center(
-                child: ReloadButton(
-                    maxHeight: screenHeight,
-                    onPressed: () {
-                      context.read<PokemonCubit>().getPokemons();
-                    }));
-          } else if (state is SuccessState) {
-            pokemonList.addAll(state.pokemon);
-          }
-          return PokemonCard(pokemonList: pokemonList);
-        },
-      ),
+      body: LayoutBuilder(builder: (context, constraints) {
+        final double maxWidth = constraints.maxWidth;
+
+        return BlocBuilder<PokemonCubit, PokemonState>(
+          builder: (context, state) {
+            if (state is InitialState || state is LoadingState) {
+              return Center(
+                  child: CircularProgressIndicator(
+                color: Theme.of(context).primaryColor,
+              ));
+            } else if (state is ErrorState) {
+              return Center(
+                  child: ReloadButton(
+                      maxWidth: maxWidth,
+                      onPressed: () {
+                        context.read<PokemonCubit>().getPokemons();
+                      }));
+            } else if (state is SuccessState) {
+              pokemonList.addAll(state.pokemon);
+            }
+            return PokemonCard(
+              pokemonList: pokemonList,
+              maxWidth: maxWidth,
+            );
+          },
+        );
+      }),
     );
   }
 }

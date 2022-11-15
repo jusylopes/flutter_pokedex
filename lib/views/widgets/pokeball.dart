@@ -10,7 +10,7 @@ class Pokeball extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.bottomRight,
+      alignment: Alignment.topRight,
       child: ClipRect(
         child: Align(
           alignment: Alignment.centerLeft,
@@ -21,7 +21,7 @@ class Pokeball extends StatelessWidget {
             shaderCallback: (Rect bounds) {
               return LinearGradient(
                 colors: [
-                  Colors.white.withOpacity(0.3),
+                  Colors.white.withOpacity(0.2),
                   Colors.white.withOpacity(0.0),
                 ],
                 begin: Alignment.topCenter,

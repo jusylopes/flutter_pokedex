@@ -37,22 +37,24 @@ class _PokemonSplashPageState extends State<PokemonSplashPage>
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: Center(
-        child: RotationTransition(
-          turns: Tween(begin: 0.0, end: 2.0).animate(controller),
-          child: Container(
-            height: screenHeight / 6,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(PokemonIcons.pokeballIcon),
-                    fit: BoxFit.fitHeight)),
+      body: LayoutBuilder(builder: (context, constraints) {
+        final double maxWidth = constraints.maxWidth;
+
+        return Center(
+          child: RotationTransition(
+            turns: Tween(begin: 0.0, end: 2.0).animate(controller),
+            child: Container(
+              height: maxWidth / 6,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(PokemonIcons.pokeballIcon),
+                      fit: BoxFit.fitHeight)),
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }
