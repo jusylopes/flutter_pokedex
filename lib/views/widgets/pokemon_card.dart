@@ -18,82 +18,53 @@ class PokemonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: maxWidth < 600 ? 2 : maxWidth ~/ 200,
-            childAspectRatio: 1.4,
-          ),
-          itemCount: pokemonList.length,
-          itemBuilder: (context, index) {
-            final pokemon = pokemonList[index];
-
-            return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            PokemonDetailPage(pokemon: pokemon)),
-                  );
-                },
-                child: Container(
-                  height: 130,
-                  decoration: BoxDecoration(
-                    color: PokemonColors()
-                        .pokeColorBackground(pokemon.types[0].type.name),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 20,
-                        color: PokemonColors()
-                            .pokeColorBackground(pokemon.types[0].type.name)
-                            .withOpacity(0.4),
-                        offset: const Offset(0, 5),
-                      ),
-                    ],
-                  ),
-                  child: Stack(
-                    children: [
-                      const Pokeball(),
-                      PokemonImage(pokemon: pokemon),
-                      PokemonCardData(pokemon: pokemon),
-                    ],
-                  ),
-                )
-
-                // Stack(alignment: Alignment.centerRight, children: [
-                //   Container(
-                //     height: 130,
-                //     margin: const EdgeInsets.only(top: 15),
-                //     decoration: BoxDecoration(
-                //       color: PokemonColors()
-                //           .pokeColorBackground(pokemon.types[0].type.name),
-                //       borderRadius: BorderRadius.circular(10.0),
-                //       boxShadow: [
-                //         BoxShadow(
-                //           blurRadius: 20,
-                //           color: PokemonColors()
-                //               .pokeColorBackground(pokemon.types[0].type.name)
-                //               .withOpacity(0.4),
-                //           offset: const Offset(0, 10),
-                //         ),
-                //       ],
-                //     ),
-                //     child: Padding(
-                //         padding: const EdgeInsets.all(20),
-                //         child: PokemonCardData(pokemon: pokemon)),
-                //   ),
-                //   const Pokeball(),
-                //   PokemonImage(pokemon: pokemon),
-                // ]),
-                );
-          },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: maxWidth < 600 ? 2 : maxWidth ~/ 200,
+          childAspectRatio: 1.4,
         ),
+        itemCount: pokemonList.length,
+        itemBuilder: (context, index) {
+          final pokemon = pokemonList[index];
+
+          return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          PokemonDetailPage(pokemon: pokemon)),
+                );
+              },
+              child: Container(
+                height: 130,
+                decoration: BoxDecoration(
+                  color: PokemonColors()
+                      .pokeColorBackground(pokemon.types[0].type.name),
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 20,
+                      color: PokemonColors()
+                          .pokeColorBackground(pokemon.types[0].type.name)
+                          .withOpacity(0.4),
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  children: [
+                    const Pokeball(),
+                    PokemonImage(pokemon: pokemon),
+                    PokemonCardData(pokemon: pokemon),
+                  ],
+                ),
+              ));
+        },
       ),
     );
   }
