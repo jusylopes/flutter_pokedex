@@ -11,6 +11,7 @@ O Aplicativo consome a api PokeApi e retorna uma lista com os pokemons e seus da
 <img src="screenshots/Screenshot_3.png" width="20%">
 <img src="screenshots/Screenshot_4.png" width="20%">
 </p>
+<p><img src="screenshots/Screenshot_5.png" width="81.3%"></p>
 
 ### Tecnologias 
 
