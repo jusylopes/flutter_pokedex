@@ -12,7 +12,7 @@ class PokemonRepository extends IPokemonRepository {
   @override
   Future<List<PokemonModel>> getPokemonList() async {
     try {
-      Response response = await dio.get('$_baseApi?limit=200');
+      Response response = await dio.get('$_baseApi?limit=20&offset=10');
 
       final pokemonResultResponse = response.data;
       List<PokemonResultModel> resultPokemon = pokemonResultResponse['results']

@@ -23,7 +23,7 @@ class _PokemonImageState extends State<PokemonImage> {
         child: AnimatedContainer(
           duration: duration,
           child: Image.network(
-            height: 100,
+            height: 80,
             tapped
                 ? widget.pokemon.sprites.backDefault
                 : widget.pokemon.sprites.frontDefault,

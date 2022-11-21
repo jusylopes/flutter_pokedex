@@ -48,11 +48,13 @@ class _PopularMovie extends State<PokemonHomePage> {
                       }));
             } else if (state is SuccessState) {
               pokemonList.addAll(state.pokemon);
+
+              return PokemonCard(
+                pokemonList: pokemonList,
+                maxWidth: maxWidth,
+              );
             }
-            return PokemonCard(
-              pokemonList: pokemonList,
-              maxWidth: maxWidth,
-            );
+            return Container();
           },
         );
       }),
