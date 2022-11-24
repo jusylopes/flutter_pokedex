@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
-import 'package:pokedex/cubit/pokemon_species/pokemon_species_cubit.dart';
+import 'package:pokedex/blocs/pokemon/pokemon_bloc.dart';
+import 'package:pokedex/blocs/pokemon_species/pokemon_species_cubit.dart';
 import 'package:pokedex/services/pokemon_repository.dart';
 import 'package:pokedex/utils/theme.dart';
 import 'package:pokedex/views/pokemon_splash_page.dart';
@@ -20,8 +20,11 @@ class Pokedex extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => PokemonCubit(pokemonRepository)),
-        BlocProvider(create: (_) => PokemonSpeciesCubit(pokemonRepository)),
+        BlocProvider<PokemonBloc>(
+            create: (_) => PokemonBloc(repository: pokemonRepository)
+              ..add(LoadPokemonEvent())),
+        BlocProvider<PokemonSpeciesCubit>(
+            create: (_) => PokemonSpeciesCubit(pokemonRepository)),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

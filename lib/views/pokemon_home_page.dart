@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
-import 'package:pokedex/cubit/pokemon/pokemon_state.dart';
+import 'package:pokedex/blocs/pokemon/pokemon_bloc.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/utils/text_styles.dart';
 import 'package:pokedex/views/widgets/pokemon_card.dart';
@@ -32,29 +31,30 @@ class _PopularMovie extends State<PokemonHomePage> {
       body: LayoutBuilder(builder: (context, constraints) {
         final double maxWidth = constraints.maxWidth;
 
-        return BlocBuilder<PokemonCubit, PokemonState>(
+        return BlocBuilder<PokemonBloc, PokemonState>(
           builder: (context, state) {
-            if (state is InitialState || state is LoadingState) {
+            if (state is InitialState ||
+                state is LoadingState && pokemonList.isEmpty) {
               return Center(
                   child: CircularProgressIndicator(
                 color: Theme.of(context).primaryColor,
               ));
-            } else if (state is ErrorState) {
+            } else if (state is ErrorState && pokemonList.isEmpty) {
               return Center(
                   child: ReloadButton(
+                      errorString: state.error.toString(),
                       maxWidth: maxWidth,
                       onPressed: () {
-                        context.read<PokemonCubit>().getPokemons();
+                        BlocProvider.of<PokemonBloc>(context)
+                            .add(LoadPokemonEvent());
                       }));
             } else if (state is SuccessState) {
               pokemonList.addAll(state.pokemon);
-
-              return PokemonCard(
-                pokemonList: pokemonList,
-                maxWidth: maxWidth,
-              );
             }
-            return Container();
+            return PokemonCard(
+              pokemonList: pokemonList,
+              maxWidth: maxWidth,
+            );
           },
         );
       }),

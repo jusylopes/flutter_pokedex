@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/cubit/pokemon_species/pokemon_species_state.dart';
+import 'package:pokedex/blocs/pokemon_species/pokemon_species_state.dart';
 import 'package:pokedex/models/pokemon_species.dart';
 import 'package:pokedex/services/pokemon_repository.dart';
 

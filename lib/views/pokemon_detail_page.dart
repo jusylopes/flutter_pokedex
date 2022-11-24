@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/cubit/pokemon_species/pokemon_species_cubit.dart';
-import 'package:pokedex/cubit/pokemon_species/pokemon_species_state.dart';
+import 'package:pokedex/blocs/pokemon_species/pokemon_species_cubit.dart';
+import 'package:pokedex/blocs/pokemon_species/pokemon_species_state.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/utils/colors.dart';
 import 'package:pokedex/views/widgets/pokemon_about.dart';
@@ -46,7 +46,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
         ),
         body: LayoutBuilder(builder: (context, constraints) {
           final double maxWidth = constraints.maxWidth;
-          
+
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -81,6 +81,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                         } else if (state is ErrorState) {
                           return Center(
                               child: ReloadButton(
+                                  errorString: 'erro',
                                   maxWidth: maxWidth,
                                   onPressed: () {
                                     context
