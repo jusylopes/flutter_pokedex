@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/blocs/pokemon_species/pokemon_species_cubit.dart';
-import 'package:pokedex/blocs/pokemon_species/pokemon_species_state.dart';
+import 'package:pokedex/blocs/pokemon_species/pokemon_species_bloc.dart';
 import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/utils/colors.dart';
 import 'package:pokedex/views/widgets/pokemon_about.dart';
@@ -19,18 +18,6 @@ class PokemonDetailPage extends StatefulWidget {
 }
 
 class _PokemonDetailPageState extends State<PokemonDetailPage> {
-  @override
-  void initState() {
-    super.initState();
-    _loadPokemonSpecies();
-  }
-
-  _loadPokemonSpecies() async {
-    context
-        .read<PokemonSpeciesCubit>()
-        .getPokemonsSpecies(pokemonId: widget.pokemon.id);
-  }
-
   @override
   Widget build(BuildContext context) {
     final PokemonModel pokemon = widget.pokemon;
@@ -71,7 +58,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(40.0),
                       child:
-                          BlocBuilder<PokemonSpeciesCubit, PokemonSpeciesState>(
+                          BlocBuilder<PokemonSpeciesBloc, PokemonSpeciesState>(
                               builder: (context, state) {
                         if (state is InitialState || state is LoadingState) {
                           return Center(
@@ -84,10 +71,9 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                                   errorString: 'erro',
                                   maxWidth: maxWidth,
                                   onPressed: () {
-                                    context
-                                        .read<PokemonSpeciesCubit>()
-                                        .getPokemonsSpecies(
-                                            pokemonId: pokemon.id);
+                                    context.read<PokemonSpeciesBloc>().add(
+                                        LoadPokemonSpeciesEvent(
+                                            id: pokemon.id));
                                   }));
                         } else if (state is SuccessState) {
                           final pokemonSpecies = state.pokemon;

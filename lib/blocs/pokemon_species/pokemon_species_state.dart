@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
-import 'package:pokedex/models/pokemon_species.dart';
+part of 'pokemon_species_bloc.dart';
 
-
+@immutable
 abstract class PokemonSpeciesState extends Equatable {}
 
 class InitialState extends PokemonSpeciesState {
@@ -23,6 +22,10 @@ class SuccessState extends PokemonSpeciesState {
 }
 
 class ErrorState extends PokemonSpeciesState {
+  final String error;
+
+  ErrorState(this.error);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [error];
 }
