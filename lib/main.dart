@@ -20,10 +20,9 @@ class Pokedex extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<PokemonBloc>(
-            create: (_) => PokemonBloc(repository: pokemonRepository)
-              ..add(LoadPokemonEvent())),
+            create: (_) => PokemonBloc(repository: pokemonRepository)),
         BlocProvider<PokemonSpeciesBloc>(
-            create: (_) => PokemonSpeciesBloc(pokemonRepository))
+            create: (_) => PokemonSpeciesBloc(repository: pokemonRepository))
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

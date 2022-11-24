@@ -27,9 +27,8 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
         PokemonColors().pokeColorBackground(pokemon.types[0].type.name);
 
     return BlocProvider(
-      create: (context) => PokemonSpeciesBloc(
-        RepositoryProvider.of<PokemonRepository>(context),
-      )..add(LoadPokemonSpeciesEvent(id: pokemon.id)),
+      create: (context) => PokemonSpeciesBloc(repository: PokemonRepository())
+        ..add(LoadPokemonSpeciesEvent(id: pokemon.id)),
       child: Scaffold(
           backgroundColor: backgroundColor,
           extendBodyBehindAppBar: true,
@@ -80,6 +79,8 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                                               context)
                                           .add(LoadPokemonSpeciesEvent(
                                               id: pokemon.id));
+                                      print(pokemon.name);
+                                      print('pokemon.');
                                     }));
                           } else if (state is SuccessState) {
                             final pokemonSpecies = state.pokemon;
