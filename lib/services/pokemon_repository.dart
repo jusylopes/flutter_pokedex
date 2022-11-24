@@ -5,8 +5,7 @@ import 'package:pokedex/models/pokemon_species.dart';
 import 'package:pokedex/services/pokemon_repository_interface.dart';
 
 class PokemonRepository extends IPokemonRepository {
-  PokemonRepository(this.dio);
-  final Dio dio;
+  static final Dio dio = Dio();
   static const _baseApi = 'https://pokeapi.co/api/v2/pokemon';
 
   @override
