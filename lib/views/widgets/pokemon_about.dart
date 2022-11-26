@@ -32,9 +32,18 @@ class PokemonAbout extends StatelessWidget {
               textAlign: TextAlign.justify,
               style: PokemonTextStyles.aboutPokemon),
         ),
-        _buildTitle('Pokédex Data', backgroundColor),
-        _buildInformationRow('Height', '${pokemon.height / 10} m'),
-        _buildInformationRow('Weight', '${pokemon.weight / 10} kg'),
+        InformationTitle(
+          title: 'Pokédex Data',
+          colorTitle: backgroundColor,
+        ),
+        InformationRow(
+          label: 'Height',
+          value: '${pokemon.height / 10} m',
+        ),
+        InformationRow(
+          label: 'Weight',
+          value: '${pokemon.weight / 10} kg',
+        ),
         Padding(
           padding: const EdgeInsets.only(bottom: 20),
           child: Row(
@@ -48,7 +57,7 @@ class PokemonAbout extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: pokemon.abilities
                     .map((ability) => Text(
-                          '${capitalize(ability.ability.name)} ',
+                          '${(ability.ability.name)} ',
                           style: PokemonTextStyles.informationTextRow,
                         ))
                     .toList(),
@@ -56,44 +65,80 @@ class PokemonAbout extends StatelessWidget {
             ],
           ),
         ),
-        _buildInformationRow('Weight', '${pokemon.weight / 10} kg'),
-        _buildTitle('Training', backgroundColor),
-        _buildInformationRow('Catch Rate', '${pokemonSpecies.captureRate}'),
-        _buildInformationRow(
-            'Base Happiness', '${pokemonSpecies.baseHappiness}'),
-        _buildInformationRow('Base Exp', '${pokemon.baseExperience}'),
-        _buildInformationRow('Growth Rate', pokemonSpecies.growthRate.name),
+        InformationRow(
+          label: 'Weight',
+          value: '${pokemon.weight / 10} kg',
+        ),
+        InformationTitle(
+          title: 'Training',
+          colorTitle: backgroundColor,
+        ),
+        InformationRow(
+          label: 'Catch Rate',
+          value: '${pokemonSpecies.captureRate}',
+        ),
+        InformationRow(
+          label: 'Base Happiness',
+          value: '${pokemonSpecies.baseHappiness}',
+        ),
+        InformationRow(
+          label: 'Base Exp',
+          value: '${pokemon.baseExperience}',
+        ),
+        InformationRow(
+          label: 'Growth Rate',
+          value: pokemonSpecies.growthRate.name,
+        ),
       ],
     );
   }
+}
 
-  _buildInformationRow(String label, String value) {
+class InformationRow extends StatelessWidget {
+  const InformationRow({Key? key, required this.label, required this.value})
+      : super(key: key);
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Row(
         children: [
           SizedBox(
             width: 130,
-            child: Text(label, style: PokemonTextStyles.informationTitleRow),
+            child: Text(
+              label,
+              style: PokemonTextStyles.informationTitleRow,
+            ),
           ),
-          Text(capitalize(value), style: PokemonTextStyles.informationTextRow),
+          Text(
+            value,
+            style: PokemonTextStyles.informationTextRow,
+          ),
         ],
       ),
     );
   }
+}
 
-  _buildTitle(String title, backgroundColor) {
+class InformationTitle extends StatelessWidget {
+  const InformationTitle(
+      {super.key, required this.title, required this.colorTitle});
+  final String title;
+  final colorTitle;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 22.5),
       child: Text(title,
           style: TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w700,
-            color: backgroundColor,
+            color: colorTitle,
           )),
     );
   }
-
-  String capitalize(pokemonText) =>
-      "${pokemonText[0].toUpperCase()}${pokemonText.substring(1)}";
 }

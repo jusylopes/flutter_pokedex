@@ -79,8 +79,6 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                                               context)
                                           .add(LoadPokemonSpeciesEvent(
                                               id: pokemon.id));
-                                      print(pokemon.name);
-                                      print('pokemon.');
                                     }));
                           } else if (state is SuccessState) {
                             final pokemonSpecies = state.pokemon;
