@@ -18,6 +18,7 @@ O Aplicativo consome a api PokeApi e retorna uma lista com os pokemons e seus da
 * Flutter
 * API PokéApi [PokeApi](https://pokeapi.co)
 * Bloc
+* Cached Network Image
 
 
 ### Desenvolvedora
