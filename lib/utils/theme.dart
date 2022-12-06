@@ -24,6 +24,7 @@ abstract class PokedexTheme {
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          toolbarHeight: 80,
         ),
       );
 

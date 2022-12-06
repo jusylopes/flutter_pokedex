@@ -14,7 +14,6 @@ class PokemonImage extends StatelessWidget {
       child: Hero(
         tag: pokemon.id,
         child: CachedNetworkImage(
-          height: 80,
           placeholder: (context, url) => Center(
               child: CircularProgressIndicator(
             color:

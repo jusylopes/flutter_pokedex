@@ -24,12 +24,9 @@ class _PopularMovie extends State<PokemonHomePage> {
           PokemonBloc(repository: PokemonRepository())..add(LoadPokemonEvent()),
       child: Scaffold(
         appBar: AppBar(
-          title: const Padding(
-            padding: EdgeInsets.only(top: 15, bottom: 15),
-            child: Text(
-              'Pokédex',
-              style: PokemonTextStyles.applicationTitle,
-            ),
+          title: const Text(
+            'Pokédex',
+            style: PokemonTextStyles.applicationTitle,
           ),
         ),
         body: LayoutBuilder(builder: (context, constraints) {
