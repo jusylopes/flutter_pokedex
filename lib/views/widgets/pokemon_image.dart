@@ -13,15 +13,20 @@ class PokemonImage extends StatelessWidget {
       child: Hero(
         tag: pokemon.id,
         child: CachedNetworkImage(
-          alignment: Alignment.topRight,
-          height: 300,
           imageUrl: pokemon.sprites.frontDefault,
-          filterQuality: FilterQuality.high,
-          placeholder: (context, url) => Container(
-            alignment: Alignment.center,
-            child: const CircularProgressIndicator(),
+          imageBuilder: (context, imageProvider) => Container(
+            alignment: Alignment.topRight,
+            height: 150,
+            decoration: BoxDecoration(
+                image:
+                    DecorationImage(image: imageProvider, fit: BoxFit.cover)),
           ),
+          // placeholder: (context, url) => Container(
+          //   alignment: Alignment.center,
+          //   child: const CircularProgressIndicator(),
+          // ),
           fit: BoxFit.cover,
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       ),
     );
