@@ -31,6 +31,7 @@ class _PopularMovie extends State<PokemonHomePage> {
         ),
         body: LayoutBuilder(builder: (context, constraints) {
           final double maxWidth = constraints.maxWidth;
+          final bool isMobile = maxWidth < 600;
 
           return BlocBuilder<PokemonBloc, PokemonState>(
             builder: (context, state) {
@@ -44,7 +45,7 @@ class _PopularMovie extends State<PokemonHomePage> {
                 return Center(
                     child: ReloadButton(
                         errorString: state.error.toString(),
-                        maxWidth: maxWidth,
+                        isMobile: isMobile,
                         onPressed: () {
                           BlocProvider.of<PokemonBloc>(context)
                               .add(LoadPokemonEvent());
@@ -54,6 +55,7 @@ class _PopularMovie extends State<PokemonHomePage> {
               }
               return PokemonCard(
                 pokemonList: pokemonList,
+                isMobile: isMobile,
                 maxWidth: maxWidth,
               );
             },

@@ -10,10 +10,12 @@ class PokemonCard extends StatelessWidget {
   const PokemonCard({
     Key? key,
     required this.pokemonList,
+    required this.isMobile,
     required this.maxWidth,
   }) : super(key: key);
 
   final List<PokemonModel> pokemonList;
+  final bool isMobile;
   final double maxWidth;
 
   @override
@@ -24,7 +26,7 @@ class PokemonCard extends StatelessWidget {
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisSpacing: 10,
-              crossAxisCount: maxWidth < 600 ? 1 : maxWidth ~/ 200,
+              crossAxisCount: isMobile ? 1 : maxWidth ~/ 250,
               mainAxisExtent: 150),
           itemCount: pokemonList.length,
           itemBuilder: (context, index) {
@@ -54,7 +56,8 @@ class PokemonCard extends StatelessWidget {
                     child: Stack(
                       children: <Widget>[
                         const Pokeball(),
-                        PokemonImage(pokemon: pokemon, heightImage: maxWidth < 600 ? 150 : 80 ),
+                        PokemonImage(
+                            pokemon: pokemon, heightImage: isMobile ? 150 : 100),
                         PokemonCardData(pokemon: pokemon),
                       ],
                     ),

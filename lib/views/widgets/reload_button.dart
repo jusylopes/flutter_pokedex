@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class ReloadButton extends StatelessWidget {
   const ReloadButton({
     Key? key,
-    required this.maxWidth,
-    required this.onPressed, required this.errorString,
+    required this.isMobile,
+    required this.onPressed,
+    required this.errorString,
   }) : super(key: key);
 
-  final double maxWidth;
+  final bool isMobile;
   final Function() onPressed;
   final String errorString;
 
@@ -17,7 +18,7 @@ class ReloadButton extends StatelessWidget {
       children: [
         Text(errorString),
         IconButton(
-          iconSize: maxWidth / 6,
+          iconSize: isMobile ? 60 : 120,
           onPressed: onPressed,
           color: Theme.of(context).colorScheme.primary,
           splashColor: Theme.of(context).colorScheme.background,

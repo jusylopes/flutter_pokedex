@@ -36,7 +36,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
             automaticallyImplyLeading: true,
           ),
           body: LayoutBuilder(builder: (context, constraints) {
-            final double maxWidth = constraints.maxWidth;
+           final bool isMobile = constraints.maxWidth < 600;
 
             return SingleChildScrollView(
               child: Column(
@@ -73,7 +73,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                             return Center(
                                 child: ReloadButton(
                                     errorString: 'erro',
-                                    maxWidth: maxWidth,
+                                    isMobile: isMobile,
                                     onPressed: () {
                                       BlocProvider.of<PokemonSpeciesBloc>(
                                               context)
