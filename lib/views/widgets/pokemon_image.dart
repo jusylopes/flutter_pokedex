@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/pokemon_model.dart';
+import 'package:pokedex/utils/colors.dart';
 
 class PokemonImage extends StatelessWidget {
   const PokemonImage({Key? key, required this.pokemon}) : super(key: key);
@@ -14,19 +15,12 @@ class PokemonImage extends StatelessWidget {
         tag: pokemon.id,
         child: CachedNetworkImage(
           imageUrl: pokemon.sprites.frontDefault,
-          imageBuilder: (context, imageProvider) => Container(
-            alignment: Alignment.topRight,
-            height: 150,
-            decoration: BoxDecoration(
-                image:
-                    DecorationImage(image: imageProvider, fit: BoxFit.cover)),
-          ),
-          // placeholder: (context, url) => Container(
-          //   alignment: Alignment.center,
-          //   child: const CircularProgressIndicator(),
-          // ),
-          fit: BoxFit.cover,
-          errorWidget: (context, url, error) => const Icon(Icons.error),
+          placeholder: (context, url) => Center(
+              child: CircularProgressIndicator(
+            color: PokemonColors().getpokeColor(pokemon.types[0].type.name),
+          )),
+          errorWidget: (context, url, error) =>
+              const Center(child: Icon(Icons.error)),
         ),
       ),
     );
