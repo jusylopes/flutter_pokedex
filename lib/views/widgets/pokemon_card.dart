@@ -54,7 +54,7 @@ class PokemonCard extends StatelessWidget {
                     child: Stack(
                       children: <Widget>[
                         const Pokeball(),
-                        PokemonImage(pokemon: pokemon),
+                        PokemonImage(pokemon: pokemon, heightImage: maxWidth < 600 ? 150 : 80 ),
                         PokemonCardData(pokemon: pokemon),
                       ],
                     ),

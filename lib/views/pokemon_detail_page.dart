@@ -48,7 +48,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            PokemonImage(pokemon: pokemon),
+                            PokemonImage(pokemon: pokemon, heightImage: 150),
                             PokemonCardData(pokemon: pokemon)
                           ]),
                     ),

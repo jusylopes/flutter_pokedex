@@ -4,8 +4,9 @@ import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/utils/colors.dart';
 
 class PokemonImage extends StatelessWidget {
-  const PokemonImage({Key? key, required this.pokemon}) : super(key: key);
+  const PokemonImage({Key? key, required this.pokemon, required this.heightImage}) : super(key: key);
   final PokemonModel pokemon;
+  final double heightImage;
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,8 @@ class PokemonImage extends StatelessWidget {
       child: Hero(
         tag: pokemon.id,
         child: CachedNetworkImage(
+          height: heightImage,
+          fit: BoxFit.fitHeight,
           imageUrl: pokemon.sprites.frontDefault,
           placeholder: (context, url) => Center(
               child: CircularProgressIndicator(
