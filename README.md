@@ -6,12 +6,12 @@ O Aplicativo consome a api [PokeApi](https://pokeapi.co) e retorna uma lista com
 
 ## Layout 
 <p>
-<img src="screenshots/Screenshot_1.png" width="20%">
-<img src="screenshots/Screenshot_2.png" width="20%">
-<img src="screenshots/Screenshot_3.png" width="20%">
-<img src="screenshots/Screenshot_4.png" width="20%">
+<img src="screenshots/Screenshot_1.png" width="22%">
+<img src="screenshots/Screenshot_2.png" width="22%">
+<img src="screenshots/Screenshot_3.png" width="22%">
+<img src="screenshots/Screenshot_4.png" width="22%">
 </p>
-<p><img src="screenshots/Screenshot_5.png" width="81.3%"></p>
+<p><img src="screenshots/Screenshot_5.png" width="89.3%"></p>
 
 ### Tecnologias 
 
