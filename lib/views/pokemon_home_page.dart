@@ -44,7 +44,7 @@ class _PopularMovie extends State<PokemonHomePage> {
               } else if (state is ErrorState && pokemonList.isEmpty) {
                 return Center(
                     child: ReloadButton(
-                        errorString: state.error.toString(),
+                        errorString: 'Error loading pokemons...',
                         isMobile: isMobile,
                         onPressed: () {
                           BlocProvider.of<PokemonBloc>(context)

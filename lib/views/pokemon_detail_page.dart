@@ -72,7 +72,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                           } else if (state is ErrorState) {
                             return Center(
                                 child: ReloadButton(
-                                    errorString: 'erro',
+                                    errorString: 'Error loading information pokemon...',
                                     isMobile: isMobile,
                                     onPressed: () {
                                       BlocProvider.of<PokemonSpeciesBloc>(
